@@ -39,9 +39,9 @@
 		}
 	echo "<br/>";
 	//hàm kiểm tra năm sinh chia hết cho 9
-	function kiemtra()
+	function kiemtra($birth)
 		{
-			if(BIRTH%9 == 0)
+			if($birth%9 == 0)
 			{
 				return 99;
 			}
@@ -51,7 +51,7 @@
 			}
 		}
 	
-	echo kiemtra();
+	echo kiemtra(BIRTH);
 	echo "<br/>";
 	echo "Có tất cả ".str_word_count(NAME). " từ trong tên  của bạn.";
 	
