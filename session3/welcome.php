@@ -42,13 +42,41 @@ if($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/
      $type = $_FILES['file']['type']; 
      $size = $_FILES['file']['size']; 
 	 
+	 /*
 	 exit($tmp_name);
-     // Upload file
+     */
+	 
+	 // Upload file
      move_uploaded_file($tmp_name,$path.$name);
      echo "File uploaded! <br />";
      echo "Tên file : ".$name."<br />";
      echo "Kiểu file : ".$type."<br />";
      echo "File size : ".$size;
+	 
+	 $user=$_POST["name"];
+	 $email=$_POST["email"];
+	 
+	 echo "<br/>";
+	 //thiết lập kết nối
+	 $servername='localhost';
+	 $username='root';
+	 $password='';
+	 $database='php07';
+	 
+	 $conn = mysqli_connect($servername, $username, $password, $database);
+	 
+	 $sql="INSERT INTO users(name, email, avatar) VALUES('$user', '$email', '$name')";
+	 
+	 /*
+	 if(mysqli_query($conn, $sql)){
+		 echo 'Connect Success';
+	 }
+	 else{
+		 echo 'Loi'. $sql.'<br./>'.$mysqli_error($conn);
+	 }
+	 */
+	 mysqli_query($conn,$sql);
+	 mysqli_close($conn);
   }
 ?>
 
